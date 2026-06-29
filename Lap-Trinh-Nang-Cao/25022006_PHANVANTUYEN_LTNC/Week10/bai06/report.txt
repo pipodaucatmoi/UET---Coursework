@@ -1,0 +1,9 @@
+Báo cáo phân tích TCP và UDP
+
+1. Khi chạy đồng thời hai CommandServer trên cùng cổng 5000, chương trình thứ hai báo lỗi BindException vì một cổng chỉ có thể được một ServerSocket sử dụng tại một thời điểm.
+
+2. CommandClient dùng TCP nên khi Server chưa khởi động, Client không thể thiết lập kết nối và báo lỗi ConnectException. Điều này cho thấy TCP cần kết nối tin cậy giữa Client và Server trước khi truyền dữ liệu.
+
+3. SensorSender dùng UDP nên có thể gửi dữ liệu mà không cần kiểm tra Receiver có đang chạy hay không. Nếu SensorReceiver chưa chạy, gói tin vẫn được gửi đi nhưng có thể bị mất.
+
+4. TCP phù hợp cho các lệnh điều khiển quan trọng như START và SHUTDOWN vì cần đảm bảo dữ liệu đến đúng nơi. UDP phù hợp cho dữ liệu cảm biến thời gian thực vì tốc độ nhanh, chấp nhận mất một vài gói tin.

@@ -1,0 +1,52 @@
+ERD - Chat Room System
+
+Entities:
+
+1. User
+- id
+- username
+- created_at
+
+2. Room
+- id
+- room_name
+- created_at
+
+3. Message
+- id
+- user_id
+- room_id
+- content
+- created_at
+
+4. RoomMember
+- user_id
+- room_id
+- joined_at
+
+Relationships:
+
+User - Room:
+Many-to-Many.
+Một user có thể tham gia nhiều phòng.
+Một phòng có thể có nhiều user.
+Quan hệ này được tách ra bảng room_members.
+
+User - Message:
+One-to-Many.
+Một user có thể gửi nhiều tin nhắn.
+Một tin nhắn chỉ thuộc về một user.
+
+Room - Message:
+One-to-Many.
+Một phòng có thể có nhiều tin nhắn.
+Một tin nhắn chỉ thuộc về một phòng.
+
+Normalization:
+
+CSDL đạt chuẩn 3NF vì:
+- Mỗi bảng lưu một loại thông tin riêng.
+- Không lặp dữ liệu người dùng, phòng, tin nhắn.
+- Bảng room_members dùng để tách quan hệ nhiều-nhiều giữa users và rooms.
+- Nội dung tin nhắn chỉ phụ thuộc vào khóa chính id của bảng messages.
+- Các khóa ngoại đảm bảo tính toàn vẹn dữ liệu.

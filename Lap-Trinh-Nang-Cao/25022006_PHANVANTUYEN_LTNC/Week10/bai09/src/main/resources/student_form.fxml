@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.StudentFormController"
+            styleClass="root-pane">
+
+    <top>
+        <VBox alignment="CENTER" spacing="5" styleClass="header-box">
+            <Label text="Student Registration Form" styleClass="title-label"/>
+            <Label text="Please enter student information" styleClass="subtitle-label"/>
+        </VBox>
+    </top>
+
+    <center>
+        <GridPane hgap="15" vgap="15" styleClass="form-grid">
+            <padding>
+                <Insets top="20" right="30" bottom="20" left="30"/>
+            </padding>
+
+            <Label text="Full Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="fullNameField" promptText="Enter full name" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Student ID:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="studentIdField" promptText="Enter student ID" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="Major:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="majorBox" promptText="Choose major" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label text="Birth Date:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <DatePicker fx:id="birthDatePicker" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+            <Label text="Gender:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <HBox spacing="15" GridPane.rowIndex="4" GridPane.columnIndex="1">
+                <RadioButton fx:id="maleRadio" text="Male"/>
+                <RadioButton fx:id="femaleRadio" text="Female"/>
+            </HBox>
+
+            <Label text="Services:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <VBox spacing="6" GridPane.rowIndex="5" GridPane.columnIndex="1">
+                <CheckBox fx:id="libraryCheckBox" text="Library Card"/>
+                <CheckBox fx:id="dormitoryCheckBox" text="Dormitory Registration"/>
+                <CheckBox fx:id="scholarshipCheckBox" text="Scholarship Application"/>
+            </VBox>
+        </GridPane>
+    </center>
+
+    <right>
+        <VBox spacing="10" styleClass="result-box">
+            <Label text="Result" styleClass="section-title"/>
+            <TextArea fx:id="resultArea" editable="false" prefWidth="250" prefHeight="300"/>
+        </VBox>
+    </right>
+
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="10" styleClass="button-box">
+            <Button text="Submit" onAction="#handleSubmit" styleClass="primary-button"/>
+            <Button text="Load Data" onAction="#handleLoad" styleClass="secondary-button"/>
+            <Button text="Clear" onAction="#handleClear" styleClass="secondary-button"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
